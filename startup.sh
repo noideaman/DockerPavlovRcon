@@ -53,5 +53,5 @@ echo ""
 echo ""
 echo ""
 echo ssh private key $(cat /root/.ssh/id_rsa)
-#start bash so the container does not exit and restart
-/bin/bash
+#start sleep so the container does not exit and restart
+sleep infinity
