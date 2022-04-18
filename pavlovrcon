@@ -52,7 +52,7 @@ stop() {
 status() {
   pidfile=/run/$NAME.pid
   #DAEMON="/build/PavlovRconWebserver"
-  status_of_proc $DAEMON $NAME && exit 0 || exit $?
+  status_of_proc $DAEMON $NAME PavlovRconWebserver && exit 0 || exit $?
 }
 
 case "$1" in
