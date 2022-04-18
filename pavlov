@@ -49,7 +49,7 @@ stop() {
 }
 
 status() {
-  status_of_proc -p $DAEMON $NAME PavlovServer && exit 0 || exit $?
+  status_of_proc $DAEMON $NAME PavlovServer && exit 0 || exit $?
 }
 
 case "$1" in
