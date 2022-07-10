@@ -11,8 +11,8 @@ A Docker container to help deploying Pavalov servers with ease.
 - PavlovRconWebserver managing enviroments with in the container. even if manually created
 
 # TO DO
-- PavlovRconWebserver adding init.d support
-- removing the standalone pavlov server
+- ~~PavlovRconWebserver adding init.d support~~
+- ~~removing the standalone pavlov server~~
 - preloading the database with localhost server connection to minimize user interaction with cli
 - docker enviroment vars to help with auto configs
 - add the pavlov discord bot support (optional by setting docker env var)
