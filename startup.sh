@@ -31,27 +31,16 @@ if [ ! -f /etc/ssh/ssh_host_dsa_key ]
 then
     dpkg-reconfigure openssh-server
     service ssh start
-    ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa <<<y >/dev/null 2>&1
-    newpass=$(echo $RANDOM | md5sum | head -c 20; echo;)
-    usermod --password $newpass steam
-    echo $newpass > sshpass.txt
-    sshpass -f sshpass.txt ssh-copy-id -p 2222 steam@localhost
-    rm -f sshpass.txt
 fi
 #start services, pavlov should be removed once pavlovrcon supports ubuntu init.d service files
 service ssh restart
-service pavlov start
-service pavlovrcon start
 #output the steam generated password and private key so rcon can be configured to use it
 #add plans to pre-populate the database with this info
-echo ""
-echo ""
-echo ""
-echo steampassword $newpass
-echo ""
-echo ""
-echo ""
-echo ""
-echo ssh private key $(cat /root/.ssh/id_rsa)
-#start sleep so the container does not exit and restart
-sleep infinity
+if [ ! -f /etc/ssh/ssh_host_dsa_key ]
+then
+	cat /logininfo.txt > /build/info.txt
+	echo "you can find the needed info in the build directory of pavlovrconserver"
+fi
+#start rcon server
+cd /build
+/build/PavlovRconWebserver --urls=http://*:5001/
